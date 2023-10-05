@@ -1,0 +1,58 @@
+<script>
+    function areThereDuplicates_Naive_Solution(...args) {
+      if(args.length < 1) return null
+      let duplicates = {}
+      for(let i=0; i < args.length; i++){
+        if(duplicates[args[i]]){ return true }
+        else{
+            duplicates[args[i]] = true;
+        }
+      }
+    return false
+}
+// console.log(areThereDuplicates_Naive_Solution(1, 2, 3)); 
+// console.log(areThereDuplicates_Naive_Solution(1, 2, 2) );
+// console.log(areThereDuplicates_Naive_Solution('a', 'b', 'c', 'a')); 
+
+   function optimized_solution(...arguments){
+     if(arguments.length <= 1) return []
+     let collection = {}
+
+     for(let val in arguments){
+        collection[arguments[val]] = (collection[arguments[val]] || 0) + 1  
+     }
+     for(let key in collection){
+      if(collection[key] > 1) return true
+     }
+     return false
+   }
+//   console.log(optimized_solution(1, 2, 3));
+//   console.log(optimized_solution(1, 2, 2));
+
+ function optimized_solution_multiple_pointer(...args){
+    args.sort((a, b) => {
+        if(a < b) return -1
+        if(a > b) return 1
+        return 
+    })
+    let start = 0
+    let next = 1
+    while(next < args.length){
+        if(args[next] === args[start]){
+            return true
+        }
+        start++
+        next++
+    }
+    return false
+ }
+//  console.log(optimized_solution_multiple_pointer(1,2,3));
+//  console.log(optimized_solution_multiple_pointer(1,2,2));
+
+// one liner solution 
+  function areThereDuplicates_One_Liner(...arguments){
+    return new Set(arguments).size !== arguments.length
+  }
+  console.log(areThereDuplicates_One_Liner(1,2,3));
+  console.log(areThereDuplicates_One_Liner(1,2,2));
+</script>   
