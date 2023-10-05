@@ -1,0 +1,42 @@
+<script>
+    function maxSubArraySum_NaiveSolution(arr, num){
+        if(num > arr.length){
+          return null
+        }
+        let max = -Infinity
+        for(let i=0; i < arr.length - num + 1; i++){
+            temp = 0
+            for(let j=0; j < num; j++){
+                temp += arr[i+j]
+            }
+            if(temp > max){
+                max = temp
+            }
+        }
+        return max
+    }
+    // console.log(maxSubArraySum_NaiveSolution([2,3,5,6,7,3,1,2,39,23], 4));
+   
+    function optimized_solution(arr, num){
+     if(arr.length < num ) return null
+     let maxSum = 0
+     let tempSum = 0
+     for(let i=0; i < num; i++){
+        maxSum = maxSum + arr[i]
+     }
+     tempSum = maxSum
+     for(let i=num; i < arr.length; i++){
+        tempSum = tempSum - arr[i - num] + arr[i]
+        maxSum = Math.max(maxSum, tempSum)
+     }
+     return maxSum
+    }
+    console.log(optimized_solution([2,3,5,6,7,3,1,2,39,23], 4));
+
+    // flow of sliding window is
+    // [2,3,5,6,7,3,1,2,39,23] let say this is array and we want max sum of 4 consecutive digits then we slide the size of 4 digit towards the end
+    //  [2,3,5,6,7,3,1,2,39,23]
+        // 2,3,5,6  first add these four then put this some in a variable
+        // then compare the next digit that is 5th and first if any digit is bigger then do operation based upon that       
+        
+</script>
