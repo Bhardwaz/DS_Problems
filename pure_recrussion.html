@@ -1,0 +1,16 @@
+<script>
+    // collecting odd values with pure recrussion
+    function collectedOddValues(arr){
+      let collectedOdds = []
+      if(arr.length === 0){
+        return collectedOdds
+      }
+
+      if(arr[0] % 2 !== 0){
+       collectedOdds.push(arr[0])
+      }
+      collectedOdds = collectedOdds.concat(collectedOddValues(arr.slice(1)))
+      return collectedOdds
+    }
+    console.log(collectedOddValues([1,2,3,4,5,6,7,8,9]));
+</script>
