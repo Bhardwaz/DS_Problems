@@ -1,0 +1,48 @@
+<script>
+    function isAnagram(str1, str2){
+     if(str1.length !== str2.length) return false 
+     
+     let frequencyCounter = {}
+
+    for(let key of str1){
+       frequencyCounter[str1[key]] = (frequencyCounter[str1[key]] || 0 ) + 1         
+    }
+
+    for(let key of str2){
+      if(!frequencyCounter[key]){
+        return false
+    } else{
+        frequencyCounter[key]--
+    }
+    }
+    return true
+}
+    // console.log(isAnagram("rat", "cat"));
+
+    function twoSum(nums, target) {
+    let left = 0;
+    let right = nums.length - 1;
+
+    while (left < right) {
+        const sum = nums[left] + nums[right];
+        if (sum === target) {
+        return [left, right];
+        } else if (sum < target) {
+        left++;
+        } else {
+        right--;    
+        }
+    }
+    // If no solution is found, return an empty array
+    return [];
+    }
+    //console.log(twoSum([3,2,4], 6));
+    
+    function isPalindrome(str){
+    if(str.length === 1) return true;
+    if(str.length === 2) return str[0] === str[1];
+    if(str[0] === str.slice(-1)) return isPalindrome(str.slice(1,-1))
+    return false;
+}
+    console.log(isPalindrome('amanaplanacanalpandemonium'));
+</script>
