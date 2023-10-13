@@ -1,0 +1,66 @@
+<script>
+    // Introduction to sorting algorithms  *** important
+    // https://www.toptal.com/developers/sorting-algorithms - check performance on this website
+    
+    // Elementary Sorting algorithms are Bubble Sort Algorithms, Selection Sort, Insertion Sort
+    // Before that lets look built in Sort
+    // sort method accepts a comparator function
+
+    function numberComare(num1, num2){
+        return num1 - num2
+     // return str1.length - str2.length
+    }
+   // console.log([6,4,15,10].sort(numberComare));
+
+   // bubble sort - it is not that efficient and commanly used. it only excel in nearly sorted data. its a good problem to solve.
+
+   // we keep comparing each value and keep pushing it forward according to our needs.
+
+   function bubbleShort(arr){
+    for(let i=0; i < arr.length; i++){
+        for(let j=0; j < arr.length ; j++){
+            console.log(arr, arr[j], arr[j+1]);
+            if(arr[j] > arr[j + 1]){
+                // swap
+                let temp = arr[j]
+                arr[j] = arr[j + 1]
+                arr[j + 1] = temp
+            }
+        }  
+        console.log("ONE PASS COMPLETE");
+    }
+   }
+   ///bubbleShort([2,1,5,12,10,12,341,123,12,1,234,12334,12,15,78,3])
+
+   // in the above solution we are doing a whole lot of comparison means we are comparing nth time the all elements. we can decrease these comarison. 
+   // [2,1,5,12,10] first we are comparing 
+   // [2,1] that is j and j + 1 first we are comparing 
+   // then [2,5] then 
+   // [5, 12] then [12,10] then we are again running the inside loop from start over nth times of array length but we still can decrease that. Each time we iterate over array through inside loop we can decrease the number of inside loop would iterate bcz we do not again want to iterate over those elements thats are already sorted and most important we want to break insider loop as soon as it does does not do any swap. 
+   // if it does not do any swap that means it also wont do in next run as well so its unnecssary to iterate over elements nth times of array.length.
+   // [2,1,5,12,10] we want to decrease the outer loop from array.length. and we want to run insider loop one less than i
+
+   function bubbleShort(arr){
+    for(let i=arr.length ; i > 0; i--){
+    let flag = true
+        for(let  j=0; j < i - 1 ; j++){
+            console.log(arr, arr[j], arr[j+1]);
+            if(arr[j] > arr[j + 1]){
+                // swap
+                let temp = arr[j]
+                arr[j] = arr[j + 1]
+                arr[j + 1] = temp
+                flag = false
+            }
+        } 
+     if(flag) break; 
+    console.log("ONE PASS COMPLETE");
+    }
+   }
+   //bubbleShort([2,1,5,12,10,12,341,123,12,1,234,12334,12,15,78,3])
+
+   // In Bubble sort on each pass an element is bubbled up so it would be benificial if we do not consider that element on next pass 
+  
+   // it would also be benificial if we have a flag in case if there are no pass then we can break and come out of loop. It avoid unnecessary iteration 
+
+</script>
