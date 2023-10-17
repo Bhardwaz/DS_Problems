@@ -1,0 +1,16 @@
+<script>
+    // we pick an element and look for less then and greater then element of that and insert that in between. we do it for all elements thats why it is called insertion sort.
+
+    function insertion_sort(arr){
+    for(let i=1; i < arr.length; i++){
+    let currentValue = arr[i]
+    for(var j = i - 1; j >= 0 && arr[j] > currentValue; j--){
+     arr[j+1] = arr[j]
+    }
+    arr[j+1] = currentValue
+    }   
+    return arr
+    }
+    console.log(insertion_sort([2,1,3,12,5,4]));
+   // insertion_sort([2,1,3,12,5,4]) 
+</script>
