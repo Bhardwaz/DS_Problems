@@ -1,0 +1,20 @@
+<script> 
+   function main(arr){
+    if(arr.length <= 1) return arr
+    let largestElem = arr[0] 
+    let secondLargest = null
+
+    for(let i=1; i < arr.length; i++){
+       if(arr[i] > largestElem){
+         largestElem = arr[i]
+    }}
+    
+    for(let i=0; i < arr.length; i++){
+     if(arr[i] < largestElem && arr[i] > secondLargest){
+      secondLargest = arr[i]
+     }
+    }
+    console.log(secondLargest);
+   }
+   main([2,4,5,6,8, 10, 12])
+</script>
